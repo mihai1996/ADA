@@ -86,13 +86,13 @@ class FibonacciCalc:
 
 
     def thread_calculate(self, numbers, numbersToProces, threadIndex, idealNumToProces):
-        lcd = []
+
         lock = threading.Lock()
         lock.acquire()
         with open("E:\\master\\ADA\\test.txt", 'a+') as f:
+
             for i in range(0, numbersToProces):
                 numberIndex = threadIndex * idealNumToProces + i
-
                 result = self.sleepy_fibonacci(numbers[numberIndex])
                 f.write('%s\n' % result)
         lock.release()
@@ -101,6 +101,7 @@ class FibonacciCalc:
 
 
     def StartThread(self, num, numebrOfTasks):
+
         threads = []
 
         for i in range(0, numebrOfTasks):
@@ -118,8 +119,9 @@ class FibonacciCalc:
                 #print("numbers to process ", math.floor(numProces))
 
 
-                thread = Thread(target=self.thread_calculate, args=(num, int(numProces), taskIndex, int(numberPerTask)))
-                threads.append(thread)
+            thread = Thread(target=self.thread_calculate, args=(num, int(numProces), taskIndex, int(numberPerTask)))
+            threads.append(thread)
+            #thread.start()
 
 
         start = time.time()
@@ -130,7 +132,6 @@ class FibonacciCalc:
 
         for thread in threads:
             thread.join()
-            #print(thread.name)
 
         end = time.time()
         elapsed = end - start
@@ -160,7 +161,7 @@ if __name__ == '__main__':
     test = FibonacciCalc()
     file = FileUtility()
     a = file.read_numbers_from_file(f_input)
-    #test.StartThread(a, 2)
+    #test.StartThread(a, 3)
     test.huinea(a)
 
 

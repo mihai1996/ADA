@@ -82,10 +82,13 @@ class FibonacciCalc:
             number2 = fib
         return fib
 
-# if __name__ == '__main__':
-#
-#     f_input = "E:\\master\\ADA\\input.txt"
-#     f_otput = "E:\\master\\ADA\\test.txt"
-#
-#     test = FibonacciCalc()
-#     test.sleepy_fibonacci()
+if __name__ == '__main__':
+
+    f_otput = "E:\\master\\ADA\\test.txt"
+    test = FibonacciCalc()
+    nums = []
+    with open(f_otput) as f:
+        for el in f:
+            nums.append(el)
+    nums.sort()
+

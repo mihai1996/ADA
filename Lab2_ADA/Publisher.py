@@ -8,11 +8,20 @@ class Publisher:
         connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 
         channel = connection.channel()
-        channel.queue_declare(queue="hello")
-        channel.basic_publish(exchange='', routing_key='hello', body=message)
+        channel.queue_declare(queue="hello", durable=False)
+        #channel.basic_publish(exchange='', routing_key='hello', body=message)
+        channel.basic_publish(
+            exchange='',
+            routing_key='hello',
+            body=message,
+            properties=pika.BasicProperties(
+                delivery_mode=2,  # make message persistent
+            ))
 
-        print(" [x] Sent 'Hello World!'")
+        #print(" [x] Sent 'Hello World!'")
+        #print(" [x] Sent %r" % message)
         connection.close()
+
 
 if __name__ == '__main__':
 
@@ -26,6 +35,3 @@ if __name__ == '__main__':
     a = file.read_numbers_from_file(f_input)
     for el in a:
         test.send_messages(str(el))
-
-
-

@@ -10,7 +10,8 @@ class FileUtility:
         return  content
 
     def write_numbers_in_file(self, fileName, numbers):
-        file = open(fileName, 'w')
+        file = open(fileName, 'a+')
+
         if numbers != None:
             file.write('%s\n' %numbers)
 

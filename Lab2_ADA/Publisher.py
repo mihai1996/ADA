@@ -25,11 +25,7 @@ if __name__ == '__main__':
 
     a = file.read_numbers_from_file(f_input)
     for el in a:
-        b = fib.sleepy_fibonacci(el)
-        #print(b)
-    #b = fib.sleepy_fibonacci(a)
-    #print(b)
-        test.send_messages(str(b))
+        test.send_messages(str(el))
 
 
 

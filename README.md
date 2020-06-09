@@ -7,4 +7,4 @@ A fost implementata procesarea cu ajutorul Threading (OpenMP) Multiprocessing (O
 <h1>Threading sleepy method</h1>
 
 
-<img src="E:\master\ADA\img_1.png">
+<img src="E:\\master\\ADA\\img_1.png">
